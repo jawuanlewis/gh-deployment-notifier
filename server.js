@@ -9,7 +9,7 @@ app.use(express.json({ limit: "1mb" }));
 app.use(express.raw({ type: "application/json" }));
 
 const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
-const GITHUB_WEBHOOK_SECRET = process.env.GITHUB_WEBHOOK_SECRET;
+const GH_WEBHOOK_SECRET = process.env.GH_WEBHOOK_SECRET;
 
 const PROJECT_CONFIGS = {
   "jawuanlewis/gpt-powered-chatbot": {
@@ -29,9 +29,9 @@ const PROJECT_CONFIGS = {
 };
 
 function verifyGitHubSignature(payload, signature) {
-  if (!GITHUB_WEBHOOK_SECRET) return true;
+  if (!GH_WEBHOOK_SECRET) return true;
 
-  const hmac = crypto.createHmac("sha256", GITHUB_WEBHOOK_SECRET);
+  const hmac = crypto.createHmac("sha256", GH_WEBHOOK_SECRET);
   const digest = "sha256=" + hmac.update(payload, "utf8").digest("hex");
   return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(digest));
 }
