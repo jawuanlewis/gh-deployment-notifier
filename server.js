@@ -13,17 +13,17 @@ const GH_WEBHOOK_SECRET = process.env.GH_WEBHOOK_SECRET;
 
 const PROJECT_CONFIGS = {
   "jawuanlewis/gpt-powered-chatbot": {
-    slackChannel: "#prev-deployments",
-    customDeploymentUrl: process.env.GPT_PREVIEW_URL,
+    slackChannel: "#deployments",
+    customDeploymentUrl: process.env.GPT_URL,
     displayName: "Jawuan's GPT",
   },
   "jawuanlewis/hangman-web-app": {
-    slackChannel: "#prod-deployments",
+    slackChannel: "#deployments",
     customDeploymentUrl: process.env.HANGMAN_URL,
     displayName: "Hangman",
   },
   default: {
-    slackChannel: "#prod-deployments",
+    slackChannel: "#deployments",
     displayName: null,
   },
 };
